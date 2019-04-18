@@ -1,9 +1,9 @@
 package com.skybet.cv.repository
 
-import org.springframework.stereotype.Repository
+import com.skybet.cv.data.Person
 
-@Repository
-class PersonRepository{
+interface PersonRepository{
 
-    fun update() = ""
+    fun update(persons:List<Person>)
+    fun load():List<Person>
 }
