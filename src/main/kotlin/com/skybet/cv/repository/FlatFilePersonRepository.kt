@@ -1,7 +1,6 @@
 package com.skybet.cv.repository
 
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.skybet.cv.data.Person
 import org.springframework.stereotype.Repository

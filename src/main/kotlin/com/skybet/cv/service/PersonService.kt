@@ -1,12 +1,12 @@
 package com.skybet.cv.service
 
 import com.skybet.cv.data.Person
-import com.skybet.cv.repository.FlatFilePersonRepository
+import com.skybet.cv.repository.PersonRepository
 import org.springframework.stereotype.Service
 
 @Service
-class PersonService(val personRepository: FlatFilePersonRepository){
+class PersonService(val flatFilePersonRepository: PersonRepository){
 
-    fun update(persons:List<Person>)=personRepository.update(persons)
-    fun load()=personRepository.load()
+    fun update(persons:List<Person>)=flatFilePersonRepository.update(persons)
+    fun load()=flatFilePersonRepository.load()
 }
