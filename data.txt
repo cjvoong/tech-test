@@ -1,4 +1,0 @@
-[{
-  "firstname": "James",
-  "lastname": "Smith"
-}]
