@@ -11,11 +11,6 @@ import org.springframework.web.bind.annotation.*
 @Controller
 class PersonController (val personService: PersonService){
 
-    @Value("\${welcome.message}")
-    private lateinit var message:String
-
-    private val tasks = listOf("a","b","c","d","e")
-
     //receives a list of people from a html form and puts them into a database
     @PostMapping("update")
     fun update(@ModelAttribute persons: Persons, model:Model):String {
@@ -29,19 +24,6 @@ class PersonController (val personService: PersonService){
     fun load(model:Model):String {
         model.addAttribute("persons",personService.load())
         return "markup"
-    }
-
-    @GetMapping("hello")
-    fun welcomeExample(@RequestParam(name = "name", required = false, defaultValue = "") name:String,  model:Model):String {
-        model.addAttribute("message", name)
-        return "welcome" //view
-    }
-
-    @GetMapping("/")
-    fun welcome(model:Model):String {
-        model.addAttribute("message",message)
-        model.addAttribute("tasks",tasks)
-        return "welcome"
     }
 
 }

@@ -3,6 +3,7 @@ package com.skybet.cv.service
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import com.skybet.cv.data.Person
+import com.skybet.cv.data.Persons
 import com.skybet.cv.repository.FlatFilePersonRepository
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeEach
@@ -33,17 +34,17 @@ class PersonServiceTest{
             }
         }
 
-//        @Nested
-//        inner class `When I try to load persons` {
-//            @Test
-//            fun `Then I should get the list of persons returned`() {
-//                val persons = listOf(Person("Johnny","Bravo"), Person("Ace","Ventura"))
-//                whenever(repo.load()).thenReturn(persons)
-//
-//                val result = underTest.load()
-//
-//                assert(persons == result)
-//            }
-//        }
+        @Nested
+        inner class `When I try to load persons` {
+            @Test
+            fun `Then I should get the list of persons returned`() {
+                val persons = Persons(listOf(Person("Johnny","Bravo"), Person("Ace","Ventura")))
+                whenever(repo.load()).thenReturn(persons)
+
+                val result = underTest.load()
+
+                assert(persons == result)
+            }
+        }
     }
 }
