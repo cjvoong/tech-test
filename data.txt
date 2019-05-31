@@ -1,0 +1,17 @@
+[{
+"firstname":"James",
+"lastname":"Smith"
+},
+{
+"firstname":"Arnie",
+"lastname":"Swarz"
+},
+{
+"firstname":"Johnny",
+"lastname":"Bravo"
+},
+{
+"firstname":"Spongebob",
+"lastname":"Squarepants"
+}
+]

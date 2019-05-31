@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>SBG Tech Test</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+<body>
+<form action="#" th:action="@{/update}" th:object="${persons}" method="post">
+    <table>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+        </tr>
+        <tr th:each="person,stat : *{personList}">
+            <td><input type="text" th:field="*{personList[__${stat.index}__].firstname}" /></td>
+            <td><input type="text" th:field="*{personList[__${stat.index}__].lastname}" /></td>
+        </tr>
+
+    </table>
+    <input type="submit" value="OK" />
+</form>
+</body>
+</html>

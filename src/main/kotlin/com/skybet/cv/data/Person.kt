@@ -12,3 +12,5 @@ data class Person(
         return gson.toJson(this)
     }
 }
+
+data class Persons(val personList:List<Person>)

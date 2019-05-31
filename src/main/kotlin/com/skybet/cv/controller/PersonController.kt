@@ -1,6 +1,7 @@
 package com.skybet.cv.controller
 
 import com.skybet.cv.data.Person
+import com.skybet.cv.data.Persons
 import com.skybet.cv.service.PersonService
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Controller
@@ -16,15 +17,19 @@ class PersonController (val personService: PersonService){
     private val tasks = listOf("a","b","c","d","e")
 
     //receives a list of people from a html form and puts them into a database
-    @GetMapping("update")
-    fun update(@RequestParam("people[][firstname]") firstnames:List<String>,
-               @RequestParam("people[][surname]") lastnames:List<String>) {
-        val persons = firstnames.zip(lastnames).map{Person(it.first,it.second)}
+    @PostMapping("update")
+    fun update(@ModelAttribute persons: Persons, model:Model):String {
+        println("in update controller")
         personService.update(persons)
+        model.addAttribute("persons",personService.load())
+        return "markup"
     }
 
     @GetMapping("load")
-    fun load() = personService.load()
+    fun load(model:Model):String {
+        model.addAttribute("persons",personService.load())
+        return "markup"
+    }
 
     @GetMapping("hello")
     fun welcomeExample(@RequestParam(name = "name", required = false, defaultValue = "") name:String,  model:Model):String {
@@ -38,4 +43,5 @@ class PersonController (val personService: PersonService){
         model.addAttribute("tasks",tasks)
         return "welcome"
     }
+
 }
